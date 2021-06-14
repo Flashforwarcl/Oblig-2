@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<meta charset="utf-8">
+<title>Test Suite</title>
+<link rel="stylesheet" href="https://code.jquery.com/qunit/qunit-2.16.0.css">
+<body>
+  <div id="qunit"></div>
+  <div id="qunit-fixture"></div>
+  <script src="https://code.jquery.com/qunit/qunit-2.16.0.js"></script>
+  <script src="model.js"></script>
+  <script src="controller.js"></script>
+</body>
+<script>
+function show(){};
+function createBar(){};
+function calcColor(){};
+
+  
+    QUnit.module('BarManipulation', function() {
+
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    // The Tests are setup in order, as they make changes to the "numbers" array. messing with order will break the tests! /
+    ////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+    
+    QUnit.test('1st select', function(assert) {
+        const txt = "Chosen bar is: "
+        const txt2 = " Array spot is: "
+        setChosenBar(1-1) //pass in (barno -1) as we do in our view, to access array place 0
+        const actual = 0 //as in array[0] (1st spot)
+        const expected = chosenBar
+        assert.equal(actual, expected, txt + (chosenBar +1) + txt2 + chosenBar);
+      });
+      QUnit.test('2nd select', function(assert) {
+        const txt = "Chosen bar is: "
+        const txt2 = " Array spot is: "
+        setChosenBar(2-1) //pass in (barno -1) as we do in our view, to access array place 1
+        const actual = 1 //as in array[1] (2nd spot)
+        const expected = chosenBar
+      assert.equal(actual, expected, txt + (chosenBar +1) + txt2 + chosenBar);
+      });
+      QUnit.test('Show init length of array', function(assert) {
+        const txt = "Bar count (Array lenght) is: "
+        const actual = numbers.length
+        const expected = numbers.length
+      assert.equal(actual, expected, txt + numbers.length);
+      });
+      QUnit.test('Add a bar', function(assert) {
+        const txt = "Bar count (Array lenght) is: "
+        const aLBefore = numbers.length
+        inputValue = 2
+        addBar()
+        const actual = numbers.length
+        const expected = aLBefore +1
+      assert.equal(actual, expected, txt + numbers.length);
+      });
+      QUnit.test('Remove a bar', function(assert) {
+        const txt = "Bar count (Array lenght) is: "
+        const aLBefore = numbers.length
+        remBar()
+        const actual = numbers.length
+        const expected = aLBefore -1
+      assert.equal(actual, expected, txt + numbers.length);
+      });
+      QUnit.test('Change Bar', function(assert) {
+        //pass array place into function, change value of place to input value
+        const txt = `Value before: ${numbers[1]} value after: `
+        inputValue = 3
+        nrB = 1
+        cChosenBar(nrB)
+        const actual = numbers[1];
+        const expected = 3;
+      assert.equal(actual, expected,txt + numbers[1]);
+      });
+
+    });
+
+
+  </script>
