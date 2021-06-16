@@ -1,8 +1,14 @@
 //valgt å bruke arrow function for å skrive alle controller funksjonene mine, da jeg trener på å skrive de riktig.
 addBar = () => {
-  numbers.length == 8
-    ? alert("Maks antall stolper er 8")
-    : numbers.push(parseInt(inputValue));
+  if (inputValue < 1) {
+    alert("Verdi i input box er mindre en 1");
+  } else if (inputValue > 10) {
+    alert("Verdi i input box er større enn 10");
+  } else {
+    numbers.length == 8
+      ? alert("Maks antall stolper er 8")
+      : numbers.push(parseInt(inputValue));
+  }
   show();
 };
 remBar = () => {
@@ -26,8 +32,13 @@ remAtArrIndex = () => {
 };
 
 setChosenBar = (nr) => {
-  chosenBar = nr;
-  enableButtons();
+  if (nr == chosenBar) {
+    disableButtons();
+    chosenBar = null;
+  } else {
+    chosenBar = nr;
+    enableButtons();
+  }
   show();
 };
 
@@ -42,4 +53,8 @@ disableButtons = () => {
 cChosenBar = (bNr) => {
   numbers[bNr] = inputValue;
   show();
+};
+
+valueCheck = (v) => {
+  inputValue = v;
 };

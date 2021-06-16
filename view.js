@@ -16,7 +16,7 @@ function show() {
   Valgt stolpe er ${chosenBar == null ? "-" : chosenBar + 1}
   med verdi ${chosenBar == null ? "-" : numbers[chosenBar]}
   </p>
-  Ny verdi:<input type="number" min="1" max="10" oninput="inputValue = this.value" value="${inputValue}"/>
+  Ny verdi:<input type="number" min="1" max="10" oninput="valueCheck(this.value)" value="${inputValue}"/>
   <button onclick="addBar()">Legg til stolpe</button><br>
   <button ${isDisabled} onClick="cChosenBar(${chosenBar})">Endre valgt stolpe</button></br>
   <button ${isDisabled} onClick="remBar()">Fjerne valgt stolpe</button>
